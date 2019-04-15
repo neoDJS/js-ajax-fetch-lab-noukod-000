@@ -11,7 +11,8 @@ function getIssues() {
 }
 
 function showIssues(json) {
-  $('#issues').html(json.map(issue => `<p><h4>${issue.title}</h4><br><p>${issue.body}</p></p>`).join());
+  console.log(json);
+  // $('#issues').html(json.map(issue => `<p><h4>${issue.title}</h4><br><p>${issue.body}</p></p>`).join());
 }
 
 function createIssue() {
