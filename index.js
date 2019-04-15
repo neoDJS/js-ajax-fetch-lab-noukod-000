@@ -1,5 +1,5 @@
 function getIssues() {
-  const repo = document.getElementById('forkedRepo').innerHTML|"neoDJS/javascript-fetch-lab";
+  const repo = document.getElementById('forkedRepo') ? document.getElementById('forkedRepo').innerHTML : "neoDJS/javascript-fetch-lab";
   fetch('https://api.github.com/repos/'+repo+'/issues', {
     method: 'get',
     headers: {
@@ -17,7 +17,7 @@ function showIssues(json) {
 }
 
 function createIssue() {
-  const repo = document.getElementById('forkedRepo').innerHTML|"neoDJS/javascript-fetch-lab";
+  const repo = document.getElementById('forkedRepo') ? document.getElementById('forkedRepo').innerHTML : "neoDJS/javascript-fetch-lab";
   const postData = {
     title: document.getElementById('title').value,
     body: document.getElementById('body').value
