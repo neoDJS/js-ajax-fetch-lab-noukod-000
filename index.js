@@ -2,6 +2,7 @@ function getIssues() {
   fetch('https://api.github.com/repos/neoDJS/javascript-fetch-lab/issues', {
     method: 'get',
     headers: {
+      Accept: 'application/vnd.github.v3+json',
       Authorization: `token ${getToken()}`
     }
   })
