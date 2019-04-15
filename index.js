@@ -16,7 +16,7 @@ function showIssues(json) {
 }
 
 function createIssue() {
-  const repo = document.getElementById('forkedRepo').innerHtml
+  const repo = $('#forkedRepo').text();
   const postData = {
     title: document.getElementById('title').value,
     body: document.getElementById('body').value
