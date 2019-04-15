@@ -1,7 +1,9 @@
 function getIssues() {
-  fetch('https://api.github.com/repos/neoDJS/javascript-fetch-lab/issues', {
+  const repo = document.getElementById('forkedRepo') ? document.getElementById('forkedRepo').innerHTML : "neoDJS/javascript-fetch-lab";
+  fetch('https://api.github.com/repos/'+repo+'/issues', {
     method: 'get',
     headers: {
+      Accept: 'application/vnd.github.v3+json',
       Authorization: `token ${getToken()}`
     }
   })
@@ -10,15 +12,17 @@ function getIssues() {
 }
 
 function showIssues(json) {
-  $('#issues').html(json.map(isuue => `<p><h4>${json.title}</h4><br><p>${json.body}</p></p>`).join());
+  console.log(json);
+  // $('#issues').html(json.map(issue => `<p><h4>${issue.title}</h4><br><p>${issue.body}</p></p>`).join());
 }
 
 function createIssue() {
+  const repo = document.getElementById('forkedRepo') ? document.getElementById('forkedRepo').innerHTML : "neoDJS/javascript-fetch-lab";
   const postData = {
     title: document.getElementById('title').value,
     body: document.getElementById('body').value
   };
-  fetch('https://api.github.com/repos/neoDJS/javascript-fetch-lab/issues', {
+  fetch('https://api.github.com/repos/'+repo+'/issues', {
     method: 'post',
     body: JSON.stringify(postData),
     headers: {
@@ -31,7 +35,7 @@ function createIssue() {
 
 function showResults(json) {
   console.log(json);
-  $('#results').html(`<a href='${json.html_url}'>${json.full_name}</a>`);
+  $('#results').html(`<a id='forkedRepo' href='${json.html_url}'>${json.full_name}</a>`);
 }
 
 function forkRepo() {
