@@ -1,5 +1,6 @@
 function getIssues() {
-  fetch('https://api.github.com/repos/neoDJS/javascript-fetch-lab/issues', {
+  const repo = $('#forkedRepo').text();
+  fetch('https://api.github.com/repos/'+repo+'/issues', {
     method: 'get',
     headers: {
       Accept: 'application/vnd.github.v3+json',
